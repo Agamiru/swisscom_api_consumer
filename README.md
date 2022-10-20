@@ -20,7 +20,7 @@ is in an inconsistent state.
 ## How To Run Application using Docker
 - Ensure docker exists on your machine.
 - Change directory to root (of this application).
-- if necessary, run `chmod u+x test.sh` to enable permissions to run this script.
+- If necessary, run `chmod u+x test.sh` to enable permissions to run this script.
 - Run `./test.sh`
 
 ## How To Run Application without Docker
