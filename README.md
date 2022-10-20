@@ -25,7 +25,7 @@ is in an inconsistent state.
 
 ## How To Run Application without Docker
 - Open two terminals, one for the test script and the other for the server.
-- Change directory to root folder based on the terminal your in.
+- Change directory to the root folder of the different applications based on the terminal your in.
 - Create a virtual enviornment `python3 -m venv venv` and install packages `pip install -r requirements.txt`.
 - Do this on both terminals.
 - On the server terminal run `make runserver`.
