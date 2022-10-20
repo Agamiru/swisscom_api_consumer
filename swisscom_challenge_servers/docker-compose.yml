@@ -1,0 +1,15 @@
+version: "3.9"
+   
+services:
+  flask-app:
+    restart: on-failure
+    build: .
+    command: make runserver
+    networks:
+      - app-localhost
+    ports:
+      - "5000:5000"
+
+networks:
+  app-localhost:
+    external: true

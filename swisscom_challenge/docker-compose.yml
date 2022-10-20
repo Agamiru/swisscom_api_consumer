@@ -1,0 +1,49 @@
+version: "3.9"
+   
+services:
+  redis-server:
+    restart: on-failure
+    image: "redis:5.0.10-alpine"
+    ports:
+      - 6379:6379
+    networks:
+      - service-net
+
+  celery-worker:
+    restart: on-failure
+    build: .
+    command: bash -c "celery -A app worker -l info"
+    networks:
+      - service-net
+      - app-localhost
+    volumes:
+      - .:/swisscom_challenge
+
+  celery-beat:
+    restart: on-failure
+    build: .
+    command: bash -c "celery -A app beat -l info"
+    networks:
+      - service-net
+    volumes:
+      - .:/swisscom_challenge
+
+  swisscom-challenge:
+    restart: on-failure
+    build: .
+    command: python3 tests.py
+    depends_on:
+      - redis-server
+      - celery-beat
+      - celery-worker
+    networks:
+      - service-net
+      - app-localhost
+    volumes:
+      - .:/swisscom_challenge
+
+networks:
+  service-net:
+    driver: bridge
+  app-localhost:
+    external: true
