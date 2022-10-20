@@ -1,3 +1,6 @@
 celerybeat-schedule
 beat.log
 worker.log
+__pycache__/
+*.py[cod]
+*$py.class
